@@ -1,59 +1,68 @@
 <!DOCTYPE html>
 <html>
+
+<head>
+    <title>Naveen Cruise</title>
+</head>
+
 <body>
-<title>cruise html page</title>
-<h2>Tejaswini Pydipally goes on a cruise</h2>
-<form>
+    <h1>Naveen venna goes on a cruise</h1>
+    <form>
+        <input type="checkbox" id="share" name="shared" value="true">
+        <lable for="shared">Shares Cabin</lable>
 
-    <label for="sharesCabin">
-        <input type="checkbox" id="sharesCabin" value="True"> Shares Cabin
-    </label><br>
+        <input type="checkbox" id="break" name="break" value="true">
+        <lable for="break">Breakfast</lable>
 
-<label for="breakfast">
-        <input type="checkbox" id="breakfast" value="True"> Breakfast
-</label><br>
+        <input type="checkbox" id="Pool" name="Pool" value="false">
+        <lable for="Pool">Pool Pass</lable>
 
-<label for="poolPass">
-      <input type="checkbox" id="poolPass" value="False"> Pool Pass
-</label><br>
+        <input type="button" value="Select a cruise" onclick="selectCruise()">
+    </form>
+    <p id="resultCheck"> </p>
+    <form>
+        <label for="days">Enter the number of days</label>
+        <input type="text" id="days" name="4" value=7>
 
-</form>
-<button onclick="selectCruise()">Select a cruise</button><br>
-<div id="result"></div>
-<script>
- let my_cruise = {};
-    function selectCruise() {
+        <label for="price">Enter price</label>
+        <input type="text" id="price" name="price" value="500" autofocus>
 
-        my_cruise = {
+        <input type="button" onclick="updateCruise()" value="Update the cruise">
+    </form>
+    <script>
+        var my_cruise = {};
+        function selectCruise() {
+            my_cruise = {};
+            if (document.getElementById("share").checked) {
+                my_cruise["shared"] = true;
+            }
+            else
+                my_cruise.shared = false;
 
-            shared: document.getElementById('sharesCabin').checked,
-            breakfast: document.getElementById('breakfast').checked,
-            pool: document.getElementById('poolPass').checked,
+            if (document.getElementById("break").checked) {
+                my_cruise.breakfast = true;
+            }
+            else
+                my_cruise.breakfast = false;
 
-        };
+            if (document.getElementById("Pool").checked) {
+                my_cruise.pool = true;
+            }
+            else
+                my_cruise.pool = false;
 
-           document.getElementById('result').innerHTML = JSON.stringify(my_cruise);
+            document.getElementById("resultCheck").innerHTML = "shared: " + my_cruise.shared + "; breakfast: " + my_cruise.breakfast + "; pool: " + my_cruise.pool + ";";
         }
 
-</script>
-<form>
+        function updateCruise() {
 
-    <label for="daysInput">Enter the number of days</label>
-     <input type="text" id="daysInput" value=""><br>
-     <br>
-    <label for="priceInput">Enter price</label>
-    <input type="text" id="priceInput" value=""><br>
-    <br>
-    <button onclick="updateCruise()">Update the cruise</button>
-</form>
-<script>
-function updateCruise() {
-    const days = document.getElementById('daysInput').value;
-    const price = document.getElementById('priceInput').value;
-    my_cruise.days = days;
-    my_cruise.price = price;
-    document.getElementById('result').innerHTML = JSON.stringify(my_cruise);
-}
-</script>
+            var days = document.getElementById("days").value;
+            var price = document.getElementById("price").value;
+            my_cruise["days"] = days;
+            my_cruise["price"] = price;
+            document.getElementById("resultCheck").innerHTML = "shared: " + my_cruise.shared + "; breakfast: " + my_cruise.breakfast + "; pool: " + my_cruise.pool + "; days: " + my_cruise.days + "; price: " + my_cruise.price + ";";
+        }
+    </script>
 </body>
+
 </html>
