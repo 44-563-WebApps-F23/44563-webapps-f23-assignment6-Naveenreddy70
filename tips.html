@@ -1,13 +1,13 @@
 <!DOCTYPE html>
 <html>
- <title>Tips</title>
+ <title>Tips page</title>
 <body>
-<h3>naveen reddy venna shows tip amounts</h3>
+<h3>Naveen Reddy Venna shows tip amounts</h3>
 <h2>Getting input</h2>
 
 <form>
     <label for="base">Enter base amount:</label>
-    <input type="number" id="base" value="50"><br>
+    <input type="number" id="base" value="50"><br><br>
 
     <label for="Percent">Enter the tip percent:</label>
     <input type="number" id="Percent" value="15"><br><br>
@@ -41,7 +41,7 @@ function tips() {
     <label for="sub">diff</label><br>
     
     <input type="radio" id="multi" name="operation" value="product" onclick="chooseOp()"> 
-    <label for="multi">mult</label><br>
+    <label for="multi">product</label><br>
 
     
     </form>
@@ -51,7 +51,7 @@ function tips() {
 <script>
     function chooseOp() {
     
-    const baseValue = document.getElementById("Amount").valueAsNumber;
+    const baseValue = document.getElementById("base").valueAsNumber;
     const tipValue = document.getElementById("Percent").valueAsNumber;
 
     const selectedOperation = document.querySelector('input[name="operation"]:checked').value;
@@ -74,7 +74,7 @@ function tips() {
         result = "Invalid operation";
     }
 
-    document.getElementById("Result").innerHTML = `${selectedOperation} of ${baseValue} and ${tipValue} is ${result}.`;
+    document.getElementById("calculationResult").innerHTML = `${selectedOperation} of ${baseValue} and ${tipValue} is ${result}.`;
   }
 
 </script>
